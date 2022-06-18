@@ -1,10 +1,8 @@
-from flask import Flask, jsonify, request
-
-
+	
+from flask import Flask
 app = Flask(__name__)
-#route to entertain our post and get request from flutter app
-@app.route('/', methods = ['GET', 'POST'])
-def nameRoute():
-    return ("aaa")
+@app.route("/")
+def main():
+    return "Welcome!"
 if __name__ == "__main__":
     app.run()
