@@ -4,7 +4,7 @@ from flask import Flask
 app = Flask(__name__)
 @app.route("/")
 def main():
-    kata = "kamu hebat sekali"
+    kata = "kamu jelek sekali"
     data = translator.translate(kata, dest='en')
     t = data.text
     return(t)
