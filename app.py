@@ -1,14 +1,13 @@
-import json
-from googletrans import Translator
-translator = Translator(service_urls=['translate.googleapis.com'])
 from flask import Flask, jsonify, request
+import json
+
+#declared an empty variable for reassignment
+response = ''
+
+#creating the instance of our flask application
 app = Flask(__name__)
-@app.route("/")
-def main():
-    kata = "kamu jelek sekali"
-    data = translator.translate(kata, dest='en')
-    t = data.text
-    return(t)
+
+#route to entertain our post and get request from flutter app
 @app.route('/name', methods = ['GET', 'POST'])
 def nameRoute():
 
@@ -27,4 +26,3 @@ def nameRoute():
 
 if __name__ == "__main__":
     app.run()
-
