@@ -27,7 +27,7 @@ def nameRoute():
         adc =  translator.translate(adda, dest='en')
         hasil = adc.text
         response = hasil
-        return " " #to avoid a type error
+        return jsonify({'name' : response})
     else:
         return jsonify({'name' : response}) #sending data back to your frontend app
 @app.route('/name2', methods = ['GET', 'POST'])
