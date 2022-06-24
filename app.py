@@ -31,5 +31,9 @@ def nameRoute():
     else:
         return jsonify({'name' : response}) #sending data back to your frontend app
 
+@app.route('/indoinggris', methods = ['GET', 'POST'])
+def nameRoute():
+    return("Hello")
+
 if __name__ == "__main__":
     app.run()
