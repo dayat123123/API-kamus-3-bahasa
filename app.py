@@ -30,6 +30,24 @@ def nameRoute():
         return " " #to avoid a type error
     else:
         return jsonify({'name' : response}) #sending data back to your frontend app
+@app.route('/name2', methods = ['GET', 'POST'])
+def nameRoute2():
+
+    #fetching the global response variable to manipulate inside the function
+    global response
+    global adda
+    global adc
+    global hasil
+    #checking the request type we get from the app
+
+    request_data = request.data #getting the response data
+    request_data = json.loads(request_data.decode('utf-8')) #converting it from json to key value pair
+    name = request_data['name'] #assigning it to name
+    adda = f'{name}' #re-assigning response with the name we got from the user
+    adc =  translator.translate(adda, dest='en')
+    hasil = adc.text
+    response = hasil
+    return jsonify({'name' : response}) #sending data back to your frontend app
 
 if __name__ == "__main__":
     app.run()
