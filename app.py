@@ -51,5 +51,15 @@ def nameRoute2():
         return " " #to avoid a type error
     else:
         return jsonify({'name' : response}) #sending data back to your frontend app
+@app.route('/api', methods = ['GET'])
+def returnvalue():
+    global hasilbanjar
+    d = {}
+    inputchr = str(request.args['query'])
+    hasilbanjar = translator.translate(inputchr, dest='id')
+    answer = hasilbanjar.text
+    d['output'] = answer
+    return d
+
 if __name__ == "__main__":
     app.run()
