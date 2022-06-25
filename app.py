@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from flask_mysqldb import MySQL
 import json
 from googletrans import Translator
 translator = Translator(service_urls=['translate.googleapis.com'])
