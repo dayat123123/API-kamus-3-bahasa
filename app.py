@@ -60,6 +60,24 @@ def returnvalue():
     answer = hasilbanjar.text
     d['output'] = answer
     return d
+@app.route('/api2', methods = ['GET'])
+def returnvalue2():
+    global indoinggris
+    d = {}
+    inputchr = str(request.args['query'])
+    indoinggris = translator.translate(inputchr, dest='en')
+    answer = indoinggris.text
+    d['output'] = answer
+    return d
+@app.route('/api3', methods = ['GET'])
+def returnvalue3():
+    global inggrisindo
+    d = {}
+    inputchr = str(request.args['query'])
+    inggrisindo = translator.translate(inputchr, dest='id')
+    answer = inggrisindo.text
+    d['output'] = answer
+    return d
 
 if __name__ == "__main__":
     app.run()
