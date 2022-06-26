@@ -65,7 +65,7 @@ def returnvalue2():
     global indoinggris
     d = {}
     inputchr = str(request.args['query'])
-    indoinggris = translator.translate(inputchr, dest='vi')
+    indoinggris = translator.translate(inputchr, dest='en')
     answer = indoinggris.text
     d['output'] = answer
     return d
