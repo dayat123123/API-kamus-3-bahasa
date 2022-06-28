@@ -98,5 +98,17 @@ def returnvalue4():
     answer = banjarindo
     d['output'] = answer
     return d
+@app.route('/api5', methods = ['GET'])
+def returnvalue5():
+    global indobanjar
+    d = {}
+    inputchr = str(request.args['query'])
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT kata_daerah FROM tb_katadasar2 where kata_dasar = %s", [inputchr])
+    mysql.connection.commit()
+    indobanjar=cur.fetchone()[0]
+    answer = indobanjar
+    d['output'] = answer
+    return d
 if __name__ == "__main__":
     app.run()
