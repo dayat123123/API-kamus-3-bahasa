@@ -94,7 +94,7 @@ def returnvalue4():
     cur = mysql.connection.cursor()
     cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [inputchr])
     mysql.connection.commit()
-    banjarindo=cur.fetchall()
+    banjarindo=cur.fetchone()[0]
     answer = banjarindo
     d['output'] = answer
     return d
