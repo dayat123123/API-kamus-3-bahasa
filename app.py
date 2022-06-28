@@ -88,13 +88,14 @@ def returnvalue3():
     return d
 @app.route('/api4', methods = ['GET'])
 def returnvalue3():
-    cur = mysql.connection.cursor()
+    global banjarindo
     d = {}
     inputchr = str(request.args['query'])
+    cur = mysql.connection.cursor()
     cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [inputchr])
     mysql.connection.commit()
-    data=cur.fetchall()
-    d['output'] = data
+    banjarindo=cur.fetchall()
+    d['output'] = banjarindo
     return jsonify(d)
 if __name__ == "__main__":
     app.run()
