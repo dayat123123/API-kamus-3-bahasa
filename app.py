@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 import json
 from googletrans import Translator
 translator = Translator(service_urls=['translate.googleapis.com'])
-
+import mysql.connector
 #declared an empty variable for reassignment
 response = ''
 
