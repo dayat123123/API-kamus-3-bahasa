@@ -97,6 +97,6 @@ def returnvalue4():
     banjarindo=cur.fetchall()
     answer = banjarindo
     d['output'] = answer
-    return jsonify(d)
+    return d
 if __name__ == "__main__":
     app.run()
