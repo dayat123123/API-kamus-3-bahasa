@@ -1,13 +1,21 @@
 from flask import Flask, jsonify, request
-import json
+from flask_mysqldb import MySQL
 from googletrans import Translator
+import json
 translator = Translator(service_urls=['translate.googleapis.com'])
 import mysql.connector
+app = Flask(__name__)
+app.config['MYSQL_HOST'] = 'sql11.freemysqlhosting.net'
+app.config['MYSQL_USER'] = 'sql11502219'
+app.config['MYSQL_PASSWORD'] = 'iQJeKmIuV5'
+app.config['MYSQL_DB'] = 'sql11502219'
+mysql = MySQL(app)
+
 #declared an empty variable for reassignment
 response = ''
 
 #creating the instance of our flask application
-app = Flask(__name__)
+
 
 #route to entertain our post and get request from flutter app
 @app.route('/name', methods = ['GET', 'POST'])
@@ -78,6 +86,16 @@ def returnvalue3():
     answer = inggrisindo.text
     d['output'] = answer
     return d
-
+@app.route('/api4', methods = ['GET'])
+def returnvalue3():
+    global banjarindo
+    d = {}
+    inputchr = str(request.args['query'])
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [inputchr])
+    mysql.connection.commit()
+    banjarindo=cur.fetchall()
+    d['output'] = banjarindo
+    return jsonify(d)
 if __name__ == "__main__":
     app.run()
