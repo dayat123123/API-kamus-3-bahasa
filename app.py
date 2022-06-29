@@ -125,5 +125,20 @@ def returnvalue6():
     hasil = aa
     d['output'] = hasil
     return d
+@app.route('/api7', methods = ['GET'])
+def returnvalue7():
+    global banjaringgris
+    global aa
+    d = {}
+    inputchr = str(request.args['query'])
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [inputchr])
+    mysql.connection.commit()
+    aa=cur.fetchone()[0]
+    banjaringgris = translator.translate(aa, dest='en')
+    answer = banjaringgris.text
+    hasil = answer
+    d['output'] = hasil
+    return d
 if __name__ == "__main__":
     app.run()
