@@ -157,6 +157,10 @@ def returnvalue7():
         hasil = answer
         d['output'] = hasil
         return d
+    elif row_count == None:
+        hasil = "Kata belum tersedia"
+        d['output'] = hasil
+        return d
     else:
         hasil = "Kata belum tersedia"
         d['output'] = hasil
