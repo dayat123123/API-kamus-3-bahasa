@@ -134,12 +134,12 @@ def returnvalue7():
     cur = mysql.connection.cursor()
     cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [inputchr])
     mysql.connection.commit()
-    aa=cur.fetchone()[0]
     if aa == None:
         hasil = "Kata belum tersedia"
         d['output'] = hasil
         return d
     else:
+        aa=cur.fetchone()[0]
         banjaringgris = translator.translate(aa, dest='en')
         answer = banjaringgris.text
         hasil = answer
