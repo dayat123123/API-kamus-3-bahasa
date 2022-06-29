@@ -132,18 +132,19 @@ def returnvalue7():
     d = {}
     inputchr = str(request.args['query'])
     cur = mysql.connection.cursor()
-    cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [inputchr])
+    row_count = cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [inputchr])
     mysql.connection.commit()
-    if aa == None:
-        hasil = "Kata belum tersedia"
-        d['output'] = hasil
-        return d
-    else:
+    if row_count > 0:
         aa=cur.fetchone()[0]
         banjaringgris = translator.translate(aa, dest='en')
         answer = banjaringgris.text
         hasil = answer
         d['output'] = hasil
         return d
+    else:
+        hasil = "Kata belum tersedia"
+        d['output'] = hasil
+        return d
+       
 if __name__ == "__main__":
     app.run()
