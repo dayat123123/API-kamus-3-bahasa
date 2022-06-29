@@ -92,24 +92,34 @@ def returnvalue4():
     d = {}
     inputchr = str(request.args['query'])
     cur = mysql.connection.cursor()
-    cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [inputchr])
+    row_count = cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [inputchr])
     mysql.connection.commit()
-    banjarindo=cur.fetchone()[0]
-    answer = banjarindo
-    d['output'] = answer
-    return d
+    if row_count > 0:
+        banjarindo=cur.fetchone()[0]
+        answer = banjarindo
+        d['output'] = answer
+        return d
+    else:
+        hasil = "Kata belum tersedia"
+        d['output'] = hasil
+        return d    
 @app.route('/api5', methods = ['GET'])
 def returnvalue5():
     global indobanjar
     d = {}
     inputchr = str(request.args['query'])
     cur = mysql.connection.cursor()
-    cur.execute("SELECT kata_daerah FROM tb_katadasar2 where kata_dasar = %s", [inputchr])
+    row_count = cur.execute("SELECT kata_daerah FROM tb_katadasar2 where kata_dasar = %s", [inputchr])
     mysql.connection.commit()
-    indobanjar=cur.fetchone()[0]
-    answer = indobanjar
-    d['output'] = answer
-    return d
+    if row_count > 0:
+        indobanjar=cur.fetchone()[0]
+        answer = indobanjar
+        d['output'] = answer
+        return d
+    else:
+        hasil = "Kata belum tersedia"
+        d['output'] = hasil
+        return d
 @app.route('/api6', methods = ['GET'])
 def returnvalue6():
     global inggrisbanjar
@@ -119,12 +129,18 @@ def returnvalue6():
     inggrisbanjar = translator.translate(inputchr, dest='id')
     answer = inggrisbanjar.text
     cur = mysql.connection.cursor()
-    cur.execute("SELECT kata_daerah FROM tb_katadasar2 where kata_dasar = %s", [answer])
+    row_count = cur.execute("SELECT kata_daerah FROM tb_katadasar2 where kata_dasar = %s", [answer])
     mysql.connection.commit()
-    aa=cur.fetchone()[0]
-    hasil = aa
-    d['output'] = hasil
-    return d
+    if row_count > 0:
+        aa=cur.fetchone()[0]
+        hasil = aa
+        d['output'] = hasil
+        return d
+    else:
+        hasil = "Kata belum tersedia"
+        d['output'] = hasil
+        return d
+
 @app.route('/api7', methods = ['GET'])
 def returnvalue7():
     global banjaringgris
