@@ -5,10 +5,10 @@ import json
 translator = Translator(service_urls=['translate.googleapis.com'])
 import mysql.connector
 app = Flask(__name__)
-app.config['MYSQL_HOST'] = 'sql11.freemysqlhosting.net'
-app.config['MYSQL_USER'] = 'sql11502219'
-app.config['MYSQL_PASSWORD'] = 'iQJeKmIuV5'
-app.config['MYSQL_DB'] = 'sql11502219'
+app.config['MYSQL_HOST'] = 'sql6.freemysqlhosting.net'
+app.config['MYSQL_USER'] = 'sql6504320'
+app.config['MYSQL_PASSWORD'] = 'enwyiuit7T'
+app.config['MYSQL_DB'] = 'sql6504320'
 mysql = MySQL(app)
 
 #declared an empty variable for reassignment
