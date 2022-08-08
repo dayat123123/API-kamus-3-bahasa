@@ -15,7 +15,7 @@ mysql = MySQL(app)
 response = ''
 
 #creating the instance of our flask application
-
+# percobaan update github
 
 #route to entertain our post and get request from flutter app
 @app.route('/name', methods = ['GET', 'POST'])
