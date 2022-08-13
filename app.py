@@ -10,7 +10,7 @@ app.config['MYSQL_USER'] = 'sql6504320'
 app.config['MYSQL_PASSWORD'] = 'enwyiuit7T'
 app.config['MYSQL_DB'] = 'sql6504320'
 mysql = MySQL(app)
-
+# percoobaan penambahan lagi ya. 
 #declared an empty variable for reassignment
 response = ''
 
