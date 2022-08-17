@@ -6,9 +6,9 @@ translator = Translator(service_urls=['translate.googleapis.com'])
 import mysql.connector
 app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'sql6.freemysqlhosting.net'
-app.config['MYSQL_USER'] = 'sql6504320'
-app.config['MYSQL_PASSWORD'] = 'enwyiuit7T'
-app.config['MYSQL_DB'] = 'sql6504320'
+app.config['MYSQL_USER'] = 'sql6513279'
+app.config['MYSQL_PASSWORD'] = '71TDCiXpb4'
+app.config['MYSQL_DB'] = 'sql6513279'
 mysql = MySQL(app)
 # percoobaan penambahan lagi ya. 
 #declared an empty variable for reassignment
