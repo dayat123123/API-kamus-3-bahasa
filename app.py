@@ -166,15 +166,6 @@ def returnvalue7():
         d['output'] = hasil
         return d
 # ini percobaan
-
-def split_string(string):
-    list_string = string.split(' ')
-    return list_string
- 
-def join_string(list_string):
-    string = '-'.join(list_string)
-    return string
-
 @app.route('/api8', methods = ['GET'])
 def returnvalue8():
     new_string = {}
