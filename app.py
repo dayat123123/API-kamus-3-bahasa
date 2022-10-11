@@ -171,7 +171,7 @@ def returnvalue8():
     new_string = {}
     string = str(request.args['query'])
     list_string = string.split()
-    new_string['output'] = '-'.join(list_string)
+    new_string['output'] = ' '.join(list_string)
     return new_string
        
 if __name__ == "__main__":
