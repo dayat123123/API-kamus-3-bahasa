@@ -177,9 +177,10 @@ def join_string(list_string):
 
 @app.route('/api8', methods = ['GET'])
 def returnvalue8():
+    new_string = {}
     string = "Saya adalah manusia"
-    list_string = split_string(string)   
-    new_string = join_string(list_string)
+    list_string = string.split()
+    new_string['output'] = '-'.join(list_string)
     return new_string
        
 if __name__ == "__main__":
