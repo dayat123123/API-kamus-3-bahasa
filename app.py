@@ -166,15 +166,21 @@ def returnvalue7():
         d['output'] = hasil
         return d
 # ini percobaan
+
+def split_string(string):
+    list_string = string.split(' ')
+    return list_string
+ 
+def join_string(list_string):
+    string = '-'.join(list_string)
+    return string
+
 @app.route('/api8', methods = ['GET'])
 def returnvalue8():
-    global banjaringgris
-    global aa
-    d = {}
-    ubah = {}
-    inputchr = str(request.args['query'])
-    ubah = inputchr.split()
-    return ubah
+    string = "Saya adalah manusia"
+    list_string = split_string(string)   
+    new_string = join_string(list_string)
+    return new_string
        
 if __name__ == "__main__":
     app.run()
