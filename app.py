@@ -172,7 +172,7 @@ def returnvalue8():
     string = str(request.args['query'])
     list_string = string.split()
     new_string['output'] = ' '.join(list_string)
-    return len(list_string)
+    return new_string
        
 if __name__ == "__main__":
     app.run()
