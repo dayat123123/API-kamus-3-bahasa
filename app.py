@@ -171,13 +171,8 @@ def returnvalue8():
     new_string = {}
     string = str(request.args['query'])
     list_string = string.split()
-    cur = mysql.connection.cursor()
-    for i in range(len(list_string)):
-        row_count = cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [list_string[i]])
-        mysql.connection.commit()
-        new_string['output'] = ' '.join(list_string[i])
-    return new_string
-
+    new_string['output'] = ' '.join(list_string)
+    return len(list_string)
        
 if __name__ == "__main__":
     app.run()
