@@ -178,7 +178,7 @@ def join_string(list_string):
 @app.route('/api8', methods = ['GET'])
 def returnvalue8():
     new_string = {}
-    string = "Saya adalah manusia"
+    string = str(request.args['query'])
     list_string = string.split()
     new_string['output'] = '-'.join(list_string)
     return new_string
