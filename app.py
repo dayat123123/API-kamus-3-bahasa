@@ -176,7 +176,7 @@ def returnvalue8():
     n = len(list_string)
     for i in range(n):
         my_list.append(list_string[i])
-    new_string['output'] = ' '.join(my_list)
+    d['output'] = ' '.join(my_list)
     return d
     # new_string = ' '.join(list_string)
     # for i, item in enumerate (list_string):
