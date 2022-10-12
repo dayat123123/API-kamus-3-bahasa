@@ -174,7 +174,7 @@ def returnvalue8():
     list_string = string.split()
     # new_string = ' '.join(list_string)
     cur = mysql.connection.cursor()
-    row_count = cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [list_string[0]])
+    row_count = cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [list_string[1]])
     mysql.connection.commit()
     if row_count > 0:
         banjarindo=cur.fetchone()[0]
