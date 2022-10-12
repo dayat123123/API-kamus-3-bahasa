@@ -168,6 +168,7 @@ def returnvalue7():
 # ini percobaan
 @app.route('/api8', methods = ['GET'])
 def returnvalue8():
+    global banj
     new_string = {}
     my_list = []
     d= {}
@@ -179,13 +180,13 @@ def returnvalue8():
         row_count = cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [list_string[i]])
         mysql.connection.commit()
         if row_count > 0:
-            banjarindo=cur.fetchone()[0]
-            answer = banjarindo
+            banj=cur.fetchone()[0]
+            answer = banj
             my_list.append(answer[i])
         else:
             hasil = "Kata belum tersedia"
             my_list.append(answer[i])
-            
+
     d['output'] = ' '.join(my_list)
     return d
     # new_string = ' '.join(list_string)
