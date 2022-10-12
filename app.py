@@ -184,8 +184,7 @@ def returnvalue8():
             answer = banj
             my_list.append(answer)
         else:
-            hasil = "Kata belum tersedia"
-            my_list.append(hasil)
+            my_list.append(list_string[i])
 
     d['output'] = ' '.join(my_list)
     return d
