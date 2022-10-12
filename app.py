@@ -168,28 +168,30 @@ def returnvalue7():
 # ini percobaan
 @app.route('/api8', methods = ['GET'])
 def returnvalue8():
-    # new_string = {}
-    # d= {}
-    # string = str(request.args['query'])
-    # list_string = string.split()
-    # # new_string = ' '.join(list_string)
-    # cur = mysql.connection.cursor()
-    # row_count = cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [list_string[1]])
-    # mysql.connection.commit()
-    # if row_count > 0:
-    #     banjarindo=cur.fetchone()[0]
-    #     answer = banjarindo
-    #     d['output'] = answer
-    #     return d
-    # else:
-    #     hasil = "Kata belum tersedia"
-    #     d['output'] = hasil
-    #     return d    
+    new_string = {}
     my_list = []
+    d= {}
     string = str(request.args['query'])
     list_string = string.split()
-    for key, value in len(list_string):
-        return "as"
-       
+    n = len(list_string)
+    for i in range(n):
+        my_list.append(list_string[i])
+    new_string['output'] = ' '.join(my_list)
+    return d
+    # new_string = ' '.join(list_string)
+    # for i, item in enumerate (list_string):
+    #     cur = mysql.connection.cursor()
+    #     row_count = cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [list_string[1]])
+    #     mysql.connection.commit()
+    #     if row_count > 0:
+    #         banjarindo=cur.fetchone()[0]
+    #         answer = banjarindo
+    #         d['output'] = answer
+    #         return d
+    #     else:
+    #         hasil = "Kata belum tersedia"
+    #         d['output'] = hasil
+    #         return d    
+    
 if __name__ == "__main__":
     app.run()
