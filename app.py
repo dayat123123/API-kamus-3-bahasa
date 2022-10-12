@@ -185,7 +185,7 @@ def returnvalue8():
             my_list.append(answer[i])
         else:
             hasil = "Kata belum tersedia"
-            my_list.append(answer[i])
+            my_list.append(hasil[i])
 
     d['output'] = ' '.join(my_list)
     return d
