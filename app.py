@@ -182,10 +182,10 @@ def returnvalue8():
         if row_count > 0:
             banj=cur.fetchone()[0]
             answer = banj
-            my_list.append(answer[i])
+            my_list.append(answer)
         else:
             hasil = "Kata belum tersedia"
-            my_list.append(hasil[i])
+            my_list.append(hasil)
 
     d['output'] = ' '.join(my_list)
     return d
