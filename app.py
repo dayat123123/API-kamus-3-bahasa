@@ -169,10 +169,22 @@ def returnvalue7():
 @app.route('/api8', methods = ['GET'])
 def returnvalue8():
     new_string = {}
+    d= {}
     string = str(request.args['query'])
     list_string = string.split()
-    new_string['output'] = ' '.join(list_string)
-    return new_string
+    new_string = ' '.join(list_string)
+    cur = mysql.connection.cursor()
+    row_count = cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [new_string])
+    mysql.connection.commit()
+    if row_count > 0:
+        banjarindo=cur.fetchone()[0]
+        answer = banjarindo
+        d['output'] = answer
+        return d
+    else:
+        hasil = "Kata belum tersedia"
+        d['output'] = hasil
+        return d    
        
 if __name__ == "__main__":
     app.run()
