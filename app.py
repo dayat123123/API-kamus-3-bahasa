@@ -168,7 +168,7 @@ def returnvalue6():
     string = str(request.args['query'])
     inggrisbanjar = translator.translate(string, dest='id')
     answer = inggrisbanjar.text
-    list_string = string.split()
+    list_string = answer.split()
     n = len(list_string)
     for i in range(n):
         cur = mysql.connection.cursor()
