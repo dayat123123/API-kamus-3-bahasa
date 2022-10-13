@@ -143,24 +143,46 @@ def returnvalue5():
     return d
 @app.route('/api6', methods = ['GET'])
 def returnvalue6():
+    # global inggrisbanjar
+    # global aa
+    # d = {}
+    # inputchr = str(request.args['query'])
+    # inggrisbanjar = translator.translate(inputchr, dest='id')
+    # answer = inggrisbanjar.text
+    # cur = mysql.connection.cursor()
+    # row_count = cur.execute("SELECT kata_daerah FROM tb_katadasar2 where kata_dasar = %s", [answer])
+    # mysql.connection.commit()
+    # if row_count > 0:
+    #     aa=cur.fetchone()[0]
+    #     hasil = aa
+    #     d['output'] = hasil
+    #     return d
+    # else:
+    #     hasil = "Kata belum tersedia"
+    #     d['output'] = hasil
+    #     return d
     global inggrisbanjar
-    global aa
-    d = {}
-    inputchr = str(request.args['query'])
-    inggrisbanjar = translator.translate(inputchr, dest='id')
+    new_string = {}
+    my_list = []
+    d= {}
+    string = str(request.args['query'])
+    inggrisbanjar = translator.translate(string, dest='id')
     answer = inggrisbanjar.text
-    cur = mysql.connection.cursor()
-    row_count = cur.execute("SELECT kata_daerah FROM tb_katadasar2 where kata_dasar = %s", [answer])
-    mysql.connection.commit()
-    if row_count > 0:
-        aa=cur.fetchone()[0]
-        hasil = aa
-        d['output'] = hasil
-        return d
-    else:
-        hasil = "Kata belum tersedia"
-        d['output'] = hasil
-        return d
+    list_string = string.split()
+    n = len(list_string)
+    for i in range(n):
+        cur = mysql.connection.cursor()
+        row_count = cur.execute("SELECT kata_daerah FROM tb_katadasar2 where kata_dasar = %s", [list_string[i]])
+        mysql.connection.commit()
+        if row_count > 0:
+            inggrisbanjar=cur.fetchone()[0]
+            answer = inggrisbanjar
+            my_list.append(answer)
+        else:
+            my_list.append(list_string[i])
+
+    d['output'] = ' '.join(my_list)
+    return d
 
 @app.route('/api7', methods = ['GET'])
 def returnvalue7():
