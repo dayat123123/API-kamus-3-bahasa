@@ -186,28 +186,50 @@ def returnvalue6():
 
 @app.route('/api7', methods = ['GET'])
 def returnvalue7():
+    # global banjaringgris
+    # global aa
+    # d = {}
+    # inputchr = str(request.args['query'])
+    # cur = mysql.connection.cursor()
+    # row_count = cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [inputchr])
+    # mysql.connection.commit()
+    # if row_count > 0:
+    #     aa=cur.fetchone()[0]
+    #     banjaringgris = translator.translate(aa, dest='en')
+    #     answer = banjaringgris.text
+    #     hasil = answer
+    #     d['output'] = hasil
+    #     return d
+    # elif row_count == None:
+    #     hasil = "Kata belum tersedia"
+    #     d['output'] = hasil
+    #     return d
+    # else:
+    #     hasil = "Kata belum tersedia"
+    #     d['output'] = hasil
+    #     return d
     global banjaringgris
     global aa
-    d = {}
-    inputchr = str(request.args['query'])
-    cur = mysql.connection.cursor()
-    row_count = cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [inputchr])
-    mysql.connection.commit()
-    if row_count > 0:
-        aa=cur.fetchone()[0]
-        banjaringgris = translator.translate(aa, dest='en')
-        answer = banjaringgris.text
-        hasil = answer
-        d['output'] = hasil
-        return d
-    elif row_count == None:
-        hasil = "Kata belum tersedia"
-        d['output'] = hasil
-        return d
-    else:
-        hasil = "Kata belum tersedia"
-        d['output'] = hasil
-        return d
+    new_string = {}
+    my_list = []
+    d= {}
+    string = str(request.args['query'])
+    list_string = string.split()
+    n = len(list_string)
+    for i in range(n):
+        cur = mysql.connection.cursor()
+        row_count = cur.execute("SELECT kata_dasar FROM tb_katadasar2 where kata_daerah = %s", [list_string[i]])
+        mysql.connection.commit()
+        if row_count > 0:
+            aa=cur.fetchone()[0]
+            banjaringgris = translator.translate(aa, dest='en')
+            answer = banjaringgris.text
+            my_list.append(answer)
+        else:
+            my_list.append(list_string[i])
+
+    d['output'] = ' '.join(my_list)
+    return d
 # ini percobaan
 @app.route('/api8', methods = ['GET'])
 def returnvalue8():
