@@ -105,21 +105,42 @@ def returnvalue4():
         return d    
 @app.route('/api5', methods = ['GET'])
 def returnvalue5():
+    # global indobanjar
+    # d = {}
+    # inputchr = str(request.args['query'])
+    # cur = mysql.connection.cursor()
+    # row_count = cur.execute("SELECT kata_daerah FROM tb_katadasar2 where kata_dasar = %s", [inputchr])
+    # mysql.connection.commit()
+    # if row_count > 0:
+    #     indobanjar=cur.fetchone()[0]
+    #     answer = indobanjar
+    #     d['output'] = answer
+    #     return d
+    # else:
+    #     hasil = "Kata belum tersedia"
+    #     d['output'] = hasil
+    #     return d
+    
     global indobanjar
-    d = {}
-    inputchr = str(request.args['query'])
-    cur = mysql.connection.cursor()
-    row_count = cur.execute("SELECT kata_daerah FROM tb_katadasar2 where kata_dasar = %s", [inputchr])
-    mysql.connection.commit()
-    if row_count > 0:
-        indobanjar=cur.fetchone()[0]
-        answer = indobanjar
-        d['output'] = answer
-        return d
-    else:
-        hasil = "Kata belum tersedia"
-        d['output'] = hasil
-        return d
+    new_string = {}
+    my_list = []
+    d= {}
+    string = str(request.args['query'])
+    list_string = string.split()
+    n = len(list_string)
+    for i in range(n):
+        cur = mysql.connection.cursor()
+        row_count = cur.execute("SELECT kata_daerah FROM tb_katadasar2 where kata_dasar = %s", [list_string[i]])
+        mysql.connection.commit()
+        if row_count > 0:
+            indobanjar = cur.fetchone()[0]
+            answer = indobanjar
+            my_list.append(answer)
+        else:
+            my_list.append(list_string[i])
+
+    d['output'] = ' '.join(my_list)
+    return d
 @app.route('/api6', methods = ['GET'])
 def returnvalue6():
     global inggrisbanjar
