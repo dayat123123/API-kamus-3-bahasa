@@ -213,6 +213,7 @@ def returnvalue7():
     new_string = {}
     my_list = []
     d= {}
+    c={}
     string = str(request.args['query'])
     list_string = string.split()
     n = len(list_string)
@@ -222,13 +223,14 @@ def returnvalue7():
         mysql.connection.commit()
         if row_count > 0:
             aa=cur.fetchone()[0]
-            banjaringgris = translator.translate(aa, dest='en')
-            answer = banjaringgris.text
-            my_list.append(answer)
+            my_list.append(aa)
         else:
             my_list.append(list_string[i])
 
-    d['output'] = ' '.join(my_list)
+    # d['output'] = ' '.join(my_list)
+    c = ' '.join(my_list)
+    banjaringgris = translator.translate(c, dest='en')
+    d['output'] = banjaringgris.text
     return d
 # ini percobaan
 @app.route('/api8', methods = ['GET'])
